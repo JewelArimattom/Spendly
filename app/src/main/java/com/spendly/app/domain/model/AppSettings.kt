@@ -12,4 +12,7 @@ data class AppSettings(
     val notificationMonitoringEnabled: Boolean = true,
     val onboardingCompleted: Boolean = false,
     val updatedAt: Long = System.currentTimeMillis()
-)
+) {
+    val appLockEnabled: Boolean
+        get() = autoLockOnBackground
+}

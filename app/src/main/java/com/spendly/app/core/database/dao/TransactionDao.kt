@@ -36,6 +36,9 @@ interface TransactionDao {
     @Query("SELECT * FROM transactions ORDER BY transaction_date DESC")
     fun getAllFlow(): Flow<List<TransactionEntity>>
 
+    @Query("SELECT * FROM transactions ORDER BY transaction_date DESC")
+    suspend fun getAllSync(): List<TransactionEntity>
+
     @Query("SELECT * FROM transactions ORDER BY transaction_date DESC LIMIT :limit")
     fun getRecent(limit: Int): Flow<List<TransactionEntity>>
 
@@ -62,4 +65,10 @@ interface TransactionDao {
 
     @Query("SELECT * FROM transactions WHERE source_reference = :sourceReference LIMIT 1")
     suspend fun getBySourceReference(sourceReference: String): TransactionEntity?
+
+    @Query("SELECT * FROM transactions WHERE transaction_date BETWEEN :start AND :end ORDER BY transaction_date DESC")
+    suspend fun getTransactionsBetween(start: Long, end: Long): List<TransactionEntity>
+
+    @Query("SELECT * FROM transactions WHERE amount_minor_units = :amount AND transaction_date BETWEEN :start AND :end LIMIT 1")
+    suspend fun findDuplicate(amount: Long, start: Long, end: Long): TransactionEntity?
 }

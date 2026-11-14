@@ -24,6 +24,12 @@ interface CategoryDao {
     @Delete
     suspend fun delete(category: CategoryEntity)
 
+    @Query("DELETE FROM categories")
+    suspend fun deleteAll()
+
+    @Query("SELECT * FROM categories ORDER BY name ASC")
+    suspend fun getAllSync(): List<CategoryEntity>
+
     @Query("SELECT * FROM categories WHERE id = :id")
     suspend fun getById(id: String): CategoryEntity?
 

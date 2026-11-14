@@ -18,4 +18,7 @@ interface AppSettingsDao {
 
     @Query("SELECT * FROM app_settings WHERE id = 'default' LIMIT 1")
     suspend fun getSettingsSync(): AppSettingsEntity?
+
+    @Query("DELETE FROM app_settings")
+    suspend fun deleteAll()
 }

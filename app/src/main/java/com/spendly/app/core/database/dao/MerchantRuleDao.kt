@@ -24,6 +24,12 @@ interface MerchantRuleDao {
     @Delete
     suspend fun delete(rule: MerchantRuleEntity)
 
+    @Query("DELETE FROM merchant_rules")
+    suspend fun deleteAll()
+
+    @Query("SELECT * FROM merchant_rules ORDER BY confidence DESC")
+    suspend fun getAllSync(): List<MerchantRuleEntity>
+
     @Query("SELECT * FROM merchant_rules WHERE id = :id")
     suspend fun getById(id: String): MerchantRuleEntity?
 

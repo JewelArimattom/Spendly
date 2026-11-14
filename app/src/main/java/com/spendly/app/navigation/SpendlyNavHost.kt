@@ -2,35 +2,60 @@ package com.spendly.app.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.spendly.app.features.accounts.AccountsScreen
-import com.spendly.app.features.analytics.AnalyticsScreen
+import com.spendly.app.features.activity.ActivityScreen
 import com.spendly.app.features.home.HomeScreen
+import com.spendly.app.features.insights.InsightsScreen
+import com.spendly.app.features.onboarding.OnboardingScreen
 import com.spendly.app.features.settings.SettingsScreen
 
 @Composable
 fun SpendlyNavHost(
     navController: NavHostController,
+    startDestination: String = TopLevelDestination.HOME.route,
+    onNavigateToQuickEntry: (appName: String?, timestamp: Long?, sessionId: String?) -> Unit = { _, _, _ -> },
     modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
-        startDestination = TopLevelDestination.HOME.route,
+        startDestination = startDestination,
         modifier = modifier
     ) {
+        composable("onboarding") {
+            OnboardingScreen(
+                onFinished = {
+                    navController.navigate(TopLevelDestination.HOME.route) {
+                        popUpTo("onboarding") { inclusive = true }
+                    }
+                }
+            )
+        }
         composable(TopLevelDestination.HOME.route) {
-            HomeScreen()
+            HomeScreen(
+                viewModel = hiltViewModel(),
+                onNavigateToQuickEntry = onNavigateToQuickEntry,
+                onNavigateToActivity = {
+                    navController.navigate(TopLevelDestination.ACTIVITY.route)
+                }
+            )
         }
-        composable(TopLevelDestination.ACCOUNTS.route) {
-            AccountsScreen()
+        composable(TopLevelDestination.INSIGHTS.route) {
+            InsightsScreen(
+                viewModel = hiltViewModel()
+            )
         }
-        composable(TopLevelDestination.ANALYTICS.route) {
-            AnalyticsScreen()
+        composable(TopLevelDestination.ACTIVITY.route) {
+            ActivityScreen(
+                viewModel = hiltViewModel()
+            )
         }
         composable(TopLevelDestination.SETTINGS.route) {
-            SettingsScreen()
+            SettingsScreen(
+                viewModel = hiltViewModel()
+            )
         }
     }
 }

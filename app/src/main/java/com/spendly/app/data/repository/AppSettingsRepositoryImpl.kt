@@ -16,6 +16,9 @@ class AppSettingsRepositoryImpl @Inject constructor(
     override suspend fun insertOrUpdate(settings: AppSettings) =
         appSettingsDao.insertOrUpdate(settings.toEntity())
 
+    override suspend fun saveSettings(settings: AppSettings) =
+        insertOrUpdate(settings)
+
     override fun getSettingsFlow(): Flow<AppSettings?> =
         appSettingsDao.getSettingsFlow().map { it?.toDomain() }
 

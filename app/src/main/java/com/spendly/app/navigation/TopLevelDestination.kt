@@ -1,9 +1,9 @@
 package com.spendly.app.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBalance
-import androidx.compose.material.icons.filled.Analytics
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Insights
+import androidx.compose.material.icons.filled.ReceiptLong
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -17,15 +17,15 @@ enum class TopLevelDestination(
         icon = Icons.Filled.Home,
         label = "Home"
     ),
-    ACCOUNTS(
-        route = "accounts",
-        icon = Icons.Filled.AccountBalance,
-        label = "Accounts"
+    INSIGHTS(
+        route = "insights",
+        icon = Icons.Filled.Insights,
+        label = "Insights"
     ),
-    ANALYTICS(
-        route = "analytics",
-        icon = Icons.Filled.Analytics,
-        label = "Analytics"
+    ACTIVITY(
+        route = "activity",
+        icon = Icons.Filled.ReceiptLong,
+        label = "Activity"
     ),
     SETTINGS(
         route = "settings",
