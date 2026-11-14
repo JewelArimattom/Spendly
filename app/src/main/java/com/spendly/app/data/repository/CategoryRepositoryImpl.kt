@@ -13,8 +13,11 @@ class CategoryRepositoryImpl @Inject constructor(
     private val categoryDao: CategoryDao
 ) : CategoryRepository {
 
-    override suspend fun insert(category: Category): Long =
+    override suspend fun insert(category: Category) =
         categoryDao.insert(category.toEntity())
+
+    override suspend fun insertAll(categories: List<Category>) =
+        categoryDao.insertAll(categories.map { it.toEntity() })
 
     override suspend fun update(category: Category) =
         categoryDao.update(category.toEntity())
@@ -22,18 +25,15 @@ class CategoryRepositoryImpl @Inject constructor(
     override suspend fun delete(category: Category) =
         categoryDao.delete(category.toEntity())
 
-    override suspend fun getById(id: Long): Category? =
+    override suspend fun getById(id: String): Category? =
         categoryDao.getById(id)?.toDomain()
 
     override fun getAll(): Flow<List<Category>> =
         categoryDao.getAllFlow().map { list -> list.map { it.toDomain() } }
 
-    override fun getByType(type: String): Flow<List<Category>> =
-        categoryDao.getByType(type).map { list -> list.map { it.toDomain() } }
+    override fun getDefaultCategories(): Flow<List<Category>> =
+        categoryDao.getDefaultCategories().map { list -> list.map { it.toDomain() } }
 
-    override fun getRootCategories(): Flow<List<Category>> =
-        categoryDao.getRootCategories().map { list -> list.map { it.toDomain() } }
-
-    override fun getSubCategories(parentId: Long): Flow<List<Category>> =
-        categoryDao.getSubCategories(parentId).map { list -> list.map { it.toDomain() } }
+    override suspend fun getByName(name: String): Category? =
+        categoryDao.getByName(name)?.toDomain()
 }

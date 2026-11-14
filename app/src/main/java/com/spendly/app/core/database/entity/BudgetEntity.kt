@@ -2,46 +2,32 @@ package com.spendly.app.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
 import androidx.room.PrimaryKey
+import java.util.UUID
 
-@Entity(
-    tableName = "budgets",
-    foreignKeys = [
-        ForeignKey(
-            entity = CategoryEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["category_id"],
-            onDelete = ForeignKey.SET_NULL
-        )
-    ],
-    indices = [
-        Index(value = ["category_id"])
-    ]
-)
+@Entity(tableName = "budgets")
 data class BudgetEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L,
-
-    @ColumnInfo(name = "name")
-    val name: String,
-
-    @ColumnInfo(name = "amount_minor")
-    val amountMinor: Long,
-
-    @ColumnInfo(name = "currency_code")
-    val currencyCode: String = "INR",
+    @PrimaryKey
+    val id: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "category_id")
-    val categoryId: Long? = null,
+    val categoryId: String? = null,
 
-    @ColumnInfo(name = "period_type")
-    val periodType: String = "MONTHLY",
+    @ColumnInfo(name = "amount_minor_units")
+    val amountMinorUnits: Long,
 
-    @ColumnInfo(name = "start_date_millis")
-    val startDateMillis: Long,
+    @ColumnInfo(name = "period")
+    val period: String = "MONTHLY",
 
-    @ColumnInfo(name = "end_date_millis")
-    val endDateMillis: Long? = null
+    @ColumnInfo(name = "start_date")
+    val startDate: Long,
+
+    @ColumnInfo(name = "end_date")
+    val endDate: Long? = null,
+
+    @ColumnInfo(name = "created_at")
+    val createdAt: Long = System.currentTimeMillis(),
+
+    @ColumnInfo(name = "updated_at")
+    val updatedAt: Long = System.currentTimeMillis()
 )

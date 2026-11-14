@@ -1,19 +1,19 @@
 package com.spendly.app.core.database
 
 import android.content.Context
+import com.spendly.app.core.database.dao.AppSettingsDao
+import com.spendly.app.core.database.dao.BudgetDao
+import com.spendly.app.core.database.dao.CategoryDao
+import com.spendly.app.core.database.dao.MerchantRuleDao
+import com.spendly.app.core.database.dao.ReminderPreferenceDao
+import com.spendly.app.core.database.dao.TransactionDao
+import com.spendly.app.core.database.dao.UpiSessionDao
+import com.spendly.app.core.security.EncryptedDatabaseManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import com.spendly.app.core.database.dao.AccountDao
-import com.spendly.app.core.database.dao.BudgetDao
-import com.spendly.app.core.database.dao.CategoryDao
-import com.spendly.app.core.database.dao.MerchantDao
-import com.spendly.app.core.database.dao.TagDao
-import com.spendly.app.core.database.dao.TransactionDao
-import com.spendly.app.core.database.dao.TransactionTagDao
-import com.spendly.app.core.security.EncryptedDatabaseManager
 import javax.inject.Singleton
 
 @Module
@@ -38,22 +38,22 @@ object DatabaseModule {
         database.categoryDao()
 
     @Provides
-    fun provideAccountDao(database: SpendlyDatabase): AccountDao =
-        database.accountDao()
+    fun provideMerchantRuleDao(database: SpendlyDatabase): MerchantRuleDao =
+        database.merchantRuleDao()
 
     @Provides
-    fun provideTagDao(database: SpendlyDatabase): TagDao =
-        database.tagDao()
-
-    @Provides
-    fun provideTransactionTagDao(database: SpendlyDatabase): TransactionTagDao =
-        database.transactionTagDao()
+    fun provideUpiSessionDao(database: SpendlyDatabase): UpiSessionDao =
+        database.upiSessionDao()
 
     @Provides
     fun provideBudgetDao(database: SpendlyDatabase): BudgetDao =
         database.budgetDao()
 
     @Provides
-    fun provideMerchantDao(database: SpendlyDatabase): MerchantDao =
-        database.merchantDao()
+    fun provideReminderPreferenceDao(database: SpendlyDatabase): ReminderPreferenceDao =
+        database.reminderPreferenceDao()
+
+    @Provides
+    fun provideAppSettingsDao(database: SpendlyDatabase): AppSettingsDao =
+        database.appSettingsDao()
 }

@@ -13,7 +13,7 @@ class BudgetRepositoryImpl @Inject constructor(
     private val budgetDao: BudgetDao
 ) : BudgetRepository {
 
-    override suspend fun insert(budget: Budget): Long =
+    override suspend fun insert(budget: Budget) =
         budgetDao.insert(budget.toEntity())
 
     override suspend fun update(budget: Budget) =
@@ -22,15 +22,12 @@ class BudgetRepositoryImpl @Inject constructor(
     override suspend fun delete(budget: Budget) =
         budgetDao.delete(budget.toEntity())
 
-    override suspend fun getById(id: Long): Budget? =
+    override suspend fun getById(id: String): Budget? =
         budgetDao.getById(id)?.toDomain()
 
     override fun getAll(): Flow<List<Budget>> =
         budgetDao.getAllFlow().map { list -> list.map { it.toDomain() } }
 
-    override fun getByCategoryId(categoryId: Long): Flow<List<Budget>> =
-        budgetDao.getByCategoryId(categoryId).map { list -> list.map { it.toDomain() } }
-
-    override fun getActiveBudgets(currentMillis: Long): Flow<List<Budget>> =
-        budgetDao.getActiveBudgets(currentMillis).map { list -> list.map { it.toDomain() } }
+    override fun getActiveBudgetsForDate(date: Long): Flow<List<Budget>> =
+        budgetDao.getActiveBudgetsForDate(date).map { list -> list.map { it.toDomain() } }
 }

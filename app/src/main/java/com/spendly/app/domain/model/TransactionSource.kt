@@ -1,8 +1,9 @@
 package com.spendly.app.domain.model
 
 enum class TransactionSource {
-    NOTIFICATION,
     MANUAL,
-    SMS,
+    NOTIFICATION,
+    UPI_SESSION,
+    BANK_SMS,
     IMPORT
 }

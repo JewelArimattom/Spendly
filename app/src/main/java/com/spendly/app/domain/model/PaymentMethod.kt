@@ -1,10 +1,10 @@
 package com.spendly.app.domain.model
 
-enum class AccountType {
+enum class PaymentMethod {
+    UPI,
     CASH,
-    BANK,
-    CREDIT_CARD,
+    CARD,
+    NET_BANKING,
     WALLET,
-    INVESTMENT,
     OTHER
 }

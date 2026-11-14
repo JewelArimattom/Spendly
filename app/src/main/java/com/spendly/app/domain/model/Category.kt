@@ -1,11 +1,12 @@
 package com.spendly.app.domain.model
 
+import java.util.UUID
+
 data class Category(
-    val id: Long = 0L,
+    val id: String = UUID.randomUUID().toString(),
     val name: String,
-    val iconName: String = "category",
-    val colorHex: String = "#FF6200EE",
-    val type: TransactionType,
+    val icon: String,
+    val color: Long,
     val isDefault: Boolean = false,
-    val parentId: Long? = null
+    val createdAt: Long = System.currentTimeMillis()
 )

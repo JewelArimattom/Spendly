@@ -1,18 +1,22 @@
 package com.spendly.app.domain.model
 
+import java.util.UUID
+
 data class Transaction(
-    val id: Long = 0L,
-    val amountMinor: Long,
-    val currencyCode: String = "INR",
-    val type: TransactionType,
-    val categoryId: Long,
-    val accountId: Long,
-    val note: String = "",
-    val merchantName: String = "",
-    val source: TransactionSource = TransactionSource.MANUAL,
-    val transactionDateMillis: Long,
-    val createdAtMillis: Long = System.currentTimeMillis(),
-    val isRecurring: Boolean = false,
-    val recurrenceType: RecurrenceType = RecurrenceType.NONE,
-    val tagIds: List<Long> = emptyList()
+    val id: String = UUID.randomUUID().toString(),
+    val amountMinorUnits: Long,
+    val currency: String = "INR",
+    val transactionType: TransactionType,
+    val merchantName: String? = null,
+    val categoryId: String? = null,
+    val purpose: String? = null,
+    val paymentMethod: PaymentMethod? = null,
+    val source: TransactionSource,
+    val sourceReference: String? = null,
+    val confidence: Float = 1.0f,
+    val status: TransactionStatus,
+    val transactionDate: Long,
+    val createdAt: Long = System.currentTimeMillis(),
+    val updatedAt: Long = System.currentTimeMillis(),
+    val note: String? = null
 )

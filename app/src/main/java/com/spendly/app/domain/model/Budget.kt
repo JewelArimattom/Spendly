@@ -1,13 +1,20 @@
 package com.spendly.app.domain.model
 
+import java.util.UUID
+
+enum class BudgetPeriod {
+    MONTHLY,
+    WEEKLY,
+    YEARLY
+}
+
 data class Budget(
-    val id: Long = 0L,
-    val name: String,
-    val amountMinor: Long,
-    val currencyCode: String = "INR",
-    val categoryId: Long? = null,
-    val periodType: RecurrenceType = RecurrenceType.MONTHLY,
-    val startDateMillis: Long,
-    val endDateMillis: Long? = null,
-    val spentMinor: Long = 0L
+    val id: String = UUID.randomUUID().toString(),
+    val categoryId: String? = null,
+    val amountMinorUnits: Long,
+    val period: BudgetPeriod = BudgetPeriod.MONTHLY,
+    val startDate: Long,
+    val endDate: Long? = null,
+    val createdAt: Long = System.currentTimeMillis(),
+    val updatedAt: Long = System.currentTimeMillis()
 )

@@ -2,70 +2,66 @@ package com.spendly.app.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import java.util.UUID
 
 @Entity(
     tableName = "transactions",
-    foreignKeys = [
-        ForeignKey(
-            entity = CategoryEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["category_id"],
-            onDelete = ForeignKey.SET_NULL
-        ),
-        ForeignKey(
-            entity = AccountEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["account_id"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ],
     indices = [
+        Index(value = ["transaction_date"]),
+        Index(value = ["status"]),
         Index(value = ["category_id"]),
-        Index(value = ["account_id"]),
-        Index(value = ["transaction_date_millis"]),
-        Index(value = ["type"])
+        Index(value = ["merchant_name"]),
+        Index(value = ["source"])
     ]
 )
 data class TransactionEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0L,
+    @PrimaryKey
+    val id: String = UUID.randomUUID().toString(),
 
-    @ColumnInfo(name = "amount_minor")
-    val amountMinor: Long,
+    @ColumnInfo(name = "amount_minor_units")
+    val amountMinorUnits: Long,
 
-    @ColumnInfo(name = "currency_code")
-    val currencyCode: String = "INR",
+    @ColumnInfo(name = "currency")
+    val currency: String = "INR",
 
-    @ColumnInfo(name = "type")
-    val type: String,
-
-    @ColumnInfo(name = "category_id")
-    val categoryId: Long? = null,
-
-    @ColumnInfo(name = "account_id")
-    val accountId: Long,
-
-    @ColumnInfo(name = "note")
-    val note: String = "",
+    @ColumnInfo(name = "transaction_type")
+    val transactionType: String,
 
     @ColumnInfo(name = "merchant_name")
-    val merchantName: String = "",
+    val merchantName: String? = null,
+
+    @ColumnInfo(name = "category_id")
+    val categoryId: String? = null,
+
+    @ColumnInfo(name = "purpose")
+    val purpose: String? = null,
+
+    @ColumnInfo(name = "payment_method")
+    val paymentMethod: String? = null,
 
     @ColumnInfo(name = "source")
-    val source: String = "MANUAL",
+    val source: String,
 
-    @ColumnInfo(name = "transaction_date_millis")
-    val transactionDateMillis: Long,
+    @ColumnInfo(name = "source_reference")
+    val sourceReference: String? = null,
 
-    @ColumnInfo(name = "created_at_millis")
-    val createdAtMillis: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = "confidence")
+    val confidence: Float = 1.0f,
 
-    @ColumnInfo(name = "is_recurring")
-    val isRecurring: Boolean = false,
+    @ColumnInfo(name = "status")
+    val status: String,
 
-    @ColumnInfo(name = "recurrence_type")
-    val recurrenceType: String = "NONE"
+    @ColumnInfo(name = "transaction_date")
+    val transactionDate: Long,
+
+    @ColumnInfo(name = "created_at")
+    val createdAt: Long = System.currentTimeMillis(),
+
+    @ColumnInfo(name = "updated_at")
+    val updatedAt: Long = System.currentTimeMillis(),
+
+    @ColumnInfo(name = "note")
+    val note: String? = null
 )

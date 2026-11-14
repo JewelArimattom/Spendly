@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 interface BudgetDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(budget: BudgetEntity): Long
+    suspend fun insert(budget: BudgetEntity)
 
     @Update
     suspend fun update(budget: BudgetEntity)
@@ -22,14 +22,11 @@ interface BudgetDao {
     suspend fun delete(budget: BudgetEntity)
 
     @Query("SELECT * FROM budgets WHERE id = :id")
-    suspend fun getById(id: Long): BudgetEntity?
+    suspend fun getById(id: String): BudgetEntity?
 
-    @Query("SELECT * FROM budgets ORDER BY name ASC")
+    @Query("SELECT * FROM budgets ORDER BY created_at DESC")
     fun getAllFlow(): Flow<List<BudgetEntity>>
 
-    @Query("SELECT * FROM budgets WHERE category_id = :categoryId")
-    fun getByCategoryId(categoryId: Long): Flow<List<BudgetEntity>>
-
-    @Query("SELECT * FROM budgets WHERE start_date_millis <= :currentMillis AND (end_date_millis IS NULL OR end_date_millis >= :currentMillis)")
-    fun getActiveBudgets(currentMillis: Long): Flow<List<BudgetEntity>>
+    @Query("SELECT * FROM budgets WHERE start_date <= :date AND (end_date IS NULL OR end_date >= :date)")
+    fun getActiveBudgetsForDate(date: Long): Flow<List<BudgetEntity>>
 }

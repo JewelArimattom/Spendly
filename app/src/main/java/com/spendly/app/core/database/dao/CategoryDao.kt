@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 interface CategoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(category: CategoryEntity): Long
+    suspend fun insert(category: CategoryEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(categories: List<CategoryEntity>)
@@ -25,20 +25,14 @@ interface CategoryDao {
     suspend fun delete(category: CategoryEntity)
 
     @Query("SELECT * FROM categories WHERE id = :id")
-    suspend fun getById(id: Long): CategoryEntity?
+    suspend fun getById(id: String): CategoryEntity?
 
     @Query("SELECT * FROM categories ORDER BY name ASC")
     fun getAllFlow(): Flow<List<CategoryEntity>>
 
-    @Query("SELECT * FROM categories WHERE type = :type ORDER BY name ASC")
-    fun getByType(type: String): Flow<List<CategoryEntity>>
+    @Query("SELECT * FROM categories WHERE is_default = 1 ORDER BY name ASC")
+    fun getDefaultCategories(): Flow<List<CategoryEntity>>
 
-    @Query("SELECT * FROM categories WHERE parent_id IS NULL ORDER BY name ASC")
-    fun getRootCategories(): Flow<List<CategoryEntity>>
-
-    @Query("SELECT * FROM categories WHERE parent_id = :parentId ORDER BY name ASC")
-    fun getSubCategories(parentId: Long): Flow<List<CategoryEntity>>
-
-    @Query("SELECT * FROM categories WHERE is_default = 1")
-    fun getDefaults(): Flow<List<CategoryEntity>>
+    @Query("SELECT * FROM categories WHERE LOWER(name) = LOWER(:name) LIMIT 1")
+    suspend fun getByName(name: String): CategoryEntity?
 }
