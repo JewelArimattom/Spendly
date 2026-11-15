@@ -1,0 +1,172 @@
+<!doctype html>
+<!-- Taste deals: software / collage / centre nav / space rhythm / arrow buttons / Figtree + DM Mono / arc mark / liquid-type / marquee-row / grain-gradient. -->
+<html lang="en" data-type="software" data-radius="sharp" data-buttons="arrow" data-ground="sand" data-motion>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="site-kind" content="software">
+  <meta name="page-type" content="software">
+  <meta name="theme-color" content="#ffffff">
+  <title>Spendly — a clearer view of your spending</title>
+  <meta name="description" content="A private, offline-first expense tracker for Android. Spendly helps you keep up with UPI payments, review your spending and stay in control of your data.">
+  <meta property="og:title" content="Spendly — a clearer view of your spending">
+  <meta property="og:description" content="A private, offline-first expense tracker for Android.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;650;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/system.css">
+  <link rel="stylesheet" href="assets/ui/cards.css">
+  <link rel="stylesheet" href="assets/layout/layout.css">
+  <link rel="stylesheet" href="assets/motion/motion.css">
+  <link rel="stylesheet" href="assets/diagrams/diagram.css">
+  <link rel="stylesheet" href="site.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav nav--centre">
+    <div class="wrap nav__bar">
+      <a class="nav__logo" href="#top" aria-label="Spendly home"><span class="brand-mark" aria-hidden="true">S</span>Spendly</a>
+      <nav class="nav__links" aria-label="Main navigation">
+        <a class="nav__link" href="#how">How it works</a>
+        <a class="nav__link" href="#activity">Activity</a>
+        <a class="nav__link" href="#insights">Insights</a>
+        <a class="nav__link" href="#privacy">Privacy</a>
+        <a class="nav__link" href="#questions">Questions</a>
+      </nav>
+      <div class="nav__actions"><a class="btn btn--primary" href="app/build/outputs/apk/debug/app-debug.apk" download>Download Spendly</a></div>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--collage" id="top" data-enter aria-labelledby="hero-title">
+      <div class="wrap"><div class="hero-text grid hero__grid">
+        <div class="hero__text span-5">
+          <h1 id="hero-title">Your spending, <span>easier to see.</span></h1>
+          <p class="hero__lead">Spendly helps you keep up with UPI payments and everyday expenses, right on your phone. No account, no cloud, no noise.</p>
+          <div class="btn-row"><a class="btn btn--primary" href="app/build/outputs/apk/debug/app-debug.apk" download>Download Spendly</a><a class="btn btn--secondary" href="#how">See how it works</a></div>
+          <p class="hero__proof">Android 10+ <span>·</span> Works offline <span>·</span> Your data stays on your device</p>
+        </div>
+        <div class="hero__art span-6 start-7 spendly-art" data-fx="grain-gradient" data-fx-params='{"speed":0,"grainMotion":0,"calmY":1}' data-fx-palette='{"bg":"#f4f5f4","glow":"#ffffff","accent":"#285d44"}' aria-label="Spendly home screen showing the fresh-install empty state">
+          <aside class="hero-insight ly-piece ly-piece--side" aria-label="Twelve built-in categories help group your spending">
+            <span class="hero-insight__label">MADE FOR EVERYDAY SPENDING</span>
+            <strong>Small details.<br>Clearer patterns.</strong>
+            <span class="hero-insight__rule" aria-hidden="true"></span>
+            <span class="hero-insight__categories">Food <i></i> Travel <i></i> Bills</span>
+            <small>12 useful categories, ready to go</small>
+          </aside>
+          <div class="ly-piece ly-piece--main spendly-window">
+            <div class="phone-status"><span>9:41</span><span>●●●  ▰</span></div>
+            <div class="sp-home-head"><div><strong>Spendly</strong><small>Private Expense Tracker</small></div><span class="avatar">S</span></div>
+            <div class="balance-card"><span class="ui-label">TRACKED BALANCE</span><strong>₹0</strong><small>Calculated balance · not a live bank balance</small></div>
+            <div class="month-row"><span>THIS MONTH</span><span>June <b aria-hidden="true"><svg viewBox="0 0 12 12"><path d="m2.5 4.5 3.5 3 3.5-3"/></svg></b></span></div>
+            <div class="month-stats"><div><i class="income-icon">↓</i><span>Income</span><b>₹0</b></div><div><i class="expense-icon">↑</i><span>Expense</span><b>₹0</b></div></div>
+            <div class="recent-head"><b>Recent transactions</b><a href="#activity">See all</a></div>
+            <div class="empty-state"><span class="empty-orbit" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 5v22M5 16h22"/></svg></span><b>No transactions logged yet</b><span>Tap + below to add your first expense or payment.</span></div>
+            <div class="phone-tabs"><span class="tab-on"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2 9 8-6 8 6v8a1 1 0 0 1-1 1h-5v-5H8v5H3a1 1 0 0 1-1-1z"/></svg>Home</span><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16V9m5 7V4m5 12v-5m5 5V7"/></svg>Insights</span><span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12M4 10h12M4 15h12"/></svg>Activity</span><span><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3"/><path d="m10 2 1 2 2 .5 2-1 2 2-1 2 .5 2 2 1v3l-2 1-.5 2 1 2-2 2-2-1-2 .5-1 2H7l-1-2-2-.5-2 1-2-2 1-2-.5-2-2-1v-3l2-1 .5-2-1-2 2-2 2 1 2-.5 1-2z" transform="translate(2 0) scale(.8)"/></svg>Settings</span></div>
+            <div class="add-fab" aria-label="Add transaction"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="ly-piece ly-piece--note d-card detect-note" aria-label="Payment tracking happens privately on your phone" data-ly-steps="700">
+            <div class="detect-mark"><span class="detect-ring">✓</span><div><b>Payment spotted</b><small>Review before it’s saved</small></div></div>
+            <div class="detect-divider"></div><p><span class="local-dot"></span> Processed on your device</p>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="section tracking" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="how-title">Less typing. <span class="muted">More clarity.</span></h2><p>Spendly can notice when a payment app is in use and read supported payment notifications locally. You stay in charge of what gets recorded.</p></div>
+        <div class="flow-line" role="img" aria-label="A UPI app session ends, Spendly checks local payment notifications, then you review a suggested transaction">
+          <div class="flow-step" data-reveal="step"><span class="flow-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><path d="M9 6h6M10 18h4"/></svg></span><span class="flow-count">01</span><h3>Make a payment</h3><p>Use one of the supported UPI apps as usual.</p></div>
+          <span class="flow-connector" aria-hidden="true"></span>
+          <div class="flow-step" data-reveal="step"><span class="flow-icon"><svg viewBox="0 0 24 24"><path d="M5 7.5h14M5 12h9M5 16.5h6"/><circle cx="18" cy="16.5" r="3"/></svg></span><span class="flow-count">02</span><h3>Spendly checks locally</h3><p>Payment alerts can be parsed on your phone. No SMS inbox access.</p></div>
+          <span class="flow-connector" aria-hidden="true"></span>
+          <div class="flow-step" data-reveal="step"><span class="flow-icon"><svg viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></svg></span><span class="flow-count">03</span><h3>You review it</h3><p>Confirm, edit, or dismiss a suggested transaction.</p></div>
+        </div>
+        <p class="section-footnote">Usage Access and Notification Access are Android permissions you choose to enable. Manual entry remains available.</p>
+        <div class="tracking-footer" data-reveal><div><b>Supported UPI apps</b><span>Google Pay · PhonePe · Paytm · BHIM · CRED</span></div><div><b>A gentle nudge, when useful</b><span>Optional local reminders can prompt you to review a payment, with quiet hours and daily limits.</span></div></div>
+      </div>
+    </section>
+
+    <section class="section activity-section" id="activity" aria-labelledby="activity-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="activity-title">A record you can make sense of.</h2><p>Search transactions, see income and expenses, and review details in one place. A fresh install starts empty; these demo entries show how Activity works.</p></div>
+        <div class="activity-frame ui" data-reveal>
+          <aside class="activity-list" aria-label="Illustrative activity entries">
+            <div class="activity-window-head"><b>Activity</b><span>Demo entries</span></div>
+            <label class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.2 4.2"/></svg><span>Search merchant, note, purpose...</span></label>
+            <div class="filter-row"><span class="filter-on">All</span><span>Expense</span><span>Income</span></div>
+            <p class="date-label">TODAY · DEMO</p>
+            <button class="transaction selected" type="button" aria-pressed="true" data-merchant="Green Basket" data-category="Groceries" data-type="Expense" data-amount="−₹840" data-date="Today, 10:42 am" data-method="UPI payment" data-source="Payment notification"><i class="merchant-icon grocer">G</i><span><b>Green Basket</b><small>Groceries · UPI</small></span><strong>−₹840</strong></button>
+            <button class="transaction" type="button" aria-pressed="false" data-merchant="Chai Corner" data-category="Food" data-type="Expense" data-amount="−₹180" data-date="Today, 9:18 am" data-method="UPI payment" data-source="Payment notification"><i class="merchant-icon meal">C</i><span><b>Chai Corner</b><small>Food · UPI</small></span><strong>−₹180</strong></button>
+            <button class="transaction" type="button" aria-pressed="false" data-merchant="City Ride" data-category="Travel" data-type="Expense" data-amount="−₹240" data-date="Today, 8:51 am" data-method="Manual entry" data-source="Entered by you"><i class="merchant-icon ride">R</i><span><b>City Ride</b><small>Travel · Manual</small></span><strong>−₹240</strong></button>
+            <p class="date-label">YESTERDAY · DEMO</p>
+            <button class="transaction" type="button" aria-pressed="false" data-merchant="Salary credit" data-category="Income" data-type="Income" data-amount="+₹32,000" data-date="Yesterday, 4:02 pm" data-method="UPI payment" data-source="Payment notification"><i class="merchant-icon pay">S</i><span><b>Salary credit</b><small>Income · UPI</small></span><strong class="credit">+₹32,000</strong></button>
+          </aside>
+          <article class="activity-detail" aria-live="polite">
+            <div class="detail-toolbar"><span>Transaction details</span><button type="button" aria-label="More transaction options"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="4" cy="10" r="1"/><circle cx="10" cy="10" r="1"/><circle cx="16" cy="10" r="1"/></svg></button></div>
+            <div class="detail-main"><i class="merchant-icon grocer large">G</i><h3>Green Basket</h3><p>Groceries · Expense</p><strong class="detail-amount">−₹840</strong><span class="example-chip">Demo entry</span></div>
+            <dl class="detail-facts"><div><dt>Date</dt><dd data-detail="date">Today, 10:42 am</dd></div><div><dt>Payment method</dt><dd data-detail="method">UPI payment</dd></div><div><dt>Category</dt><dd><span data-detail="category">Groceries</span> <button type="button" class="edit-link">Edit</button></dd></div><div><dt>Added from</dt><dd data-detail="source">Payment notification</dd></div><div><dt>UPI reference</dt><dd>•••• ••••</dd></div></dl>
+            <p class="detail-note">Demo details for the interface; this entry is not part of your ledger.</p>
+          </article>
+        </div>
+        <p class="section-footnote">Demo activity only. Spendly opens without transaction data; your ledger is yours to build.</p>
+      </div>
+    </section>
+
+    <section class="privacy-section" id="privacy" aria-labelledby="privacy-title">
+      <div class="wrap privacy-layout">
+        <div data-reveal><h2 id="privacy-title" data-moment="liquid-type">Your finances stay yours.</h2><p>Spendly asks for no account. It requests no internet permission, does not read SMS, and does not send financial data to a server.</p></div>
+        <ul class="privacy-facts" data-reveal><li><span aria-hidden="true"></span><b>No account or cloud sync</b><small>Start using the app without signing up.</small></li><li><span aria-hidden="true"></span><b>No SMS inbox access</b><small>Payment notifications are handled on-device.</small></li><li><span aria-hidden="true"></span><b>No network permission</b><small>Your financial data stays on this phone.</small></li></ul>
+      </div>
+    </section>
+
+    <section class="section insights-section" id="insights" aria-labelledby="insights-title">
+      <div class="wrap insight-layout"><div class="section-head"><h2 id="insights-title">See where the month went.</h2><p>Insights brings your own entries together by month and category. As your ledger grows, income and expenses become easier to review.</p></div>
+          <div class="insight-window ui" aria-label="Spendly monthly insights, shown with no recorded data" data-reveal>
+          <div class="insight-top"><div><b>Insights</b><small>Monthly overview</small></div><span>June 2026⌄</span></div>
+          <div class="insight-totals"><div><span>INCOME</span><b>₹0</b></div><div><span>EXPENSE</span><b>₹0</b></div><div><span>AVERAGE / DAY</span><b>₹0</b></div></div>
+          <div class="chart-title"><b>Spending by category</b><span>No transactions yet</span></div>
+          <div class="insight-empty"><div class="chart-axes"><i></i><i></i><i></i><i></i><span></span></div><b>Your insights will show here</b><small>Record a transaction to get started.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section security-section" id="security" aria-labelledby="security-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="security-title">Private by design. <span class="muted">Protected on your phone.</span></h2><p>Your local database is encrypted. Add an app lock if you want another layer between your finances and anyone holding your device.</p></div>
+        <div class="security-layout"><div class="security-copy" data-reveal><div class="security-row"><span class="security-glyph" aria-hidden="true"></span><div><h3>Encrypted storage</h3><p>SQLCipher encrypts the database. A key protected by Android Keystore helps secure its passphrase.</p></div></div><div class="security-row"><span class="security-glyph" aria-hidden="true"></span><div><h3>Optional app lock</h3><p>Choose biometric authentication or a PIN. When enabled, the app can conceal its screen in task previews and block screenshots.</p></div></div><div class="security-row"><span class="security-glyph" aria-hidden="true"></span><div><h3>Offline backup you control</h3><p>Export an encrypted backup file and restore it when needed. The backup uses a password you choose.</p></div></div></div>
+          <div class="security-diagram ui" aria-label="Financial data is encrypted on the device and an optional encrypted backup is stored where you choose" data-reveal><div class="device-node"><span class="node-icon">S</span><b>Your phone</b><small>Encrypted database</small></div><div class="secure-path"><span>Keystore protected key</span><i></i><span>Password-protected export</span></div><div class="backup-node"><span class="file-icon">FILE</span><b>Your backup file</b><small>Saved where you choose</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section categories-section" id="categories" aria-labelledby="categories-title">
+      <div class="wrap"><div class="section-head"><h2 id="categories-title">Your spending, in useful groups.</h2><p>Spendly starts with twelve categories. Correct a merchant’s category and Spendly can remember that choice on your device.</p></div>
+      <div class="category-marquee" data-moment="marquee-row" aria-label="Spendly default transaction categories" data-reveal><ul class="mo-mq__track"><li>Food</li><li>Shopping</li><li>Travel</li><li>Fuel</li><li>Bills</li><li>Entertainment</li><li>Health</li><li>Education</li><li>Rent</li><li>Groceries</li><li>Transfers</li><li>Other</li></ul></div></div>
+    </section>
+
+    <section class="section faq-section" id="questions" aria-labelledby="questions-title">
+      <div class="wrap faq-layout"><div class="section-head"><h2 id="questions-title">Good to know.</h2><p>Clear answers about access, data and the app download.</p></div><div class="faq-list" data-reveal>
+        <details><summary>Does Spendly read my SMS messages?</summary><p>No. Spendly does not request SMS access. Optional Notification Access can read payment alerts from supported apps locally so it can suggest transactions.</p></details>
+        <details><summary>Do I need to enable permissions?</summary><p>No account is needed. Usage Access and Notification Access are optional Android settings that support automatic detection. You can also enter expenses yourself.</p></details>
+        <details><summary>Where is my financial data stored?</summary><p>On your device in an encrypted database. Spendly has no internet permission or cloud sync.</p></details>
+        <details><summary>Which Android versions are supported?</summary><p>Android 10 and newer.</p></details>
+        <details><summary>What will the download install?</summary><p>The file linked here is Spendly v1.0.0’s local debug APK (about 80 MB), not a Play Store release. Android may ask you to allow installation from your browser or file manager. Only install an APK you trust.</p></details>
+      </div></div>
+    </section>
+
+    <section class="close-section" id="download" aria-labelledby="close-title"><div class="wrap close-layout" data-reveal><div><h2 id="close-title">Make money tracking feel lighter.</h2><p>Start with a clear ledger and keep your financial data on your phone.</p></div><a class="btn btn--light" href="app/build/outputs/apk/debug/app-debug.apk" download>Download Spendly</a></div></section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-layout" data-reveal><div class="footer-brand"><a class="nav__logo" href="#top"><span class="brand-mark" aria-hidden="true">S</span>Spendly</a><p>A simpler view of your money.<br>Private, offline-first expense tracking for Android.</p><span class="footer-local"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5.5" y="2.5" width="9" height="15" rx="2"/><path d="M8.5 5h3M9 14.5h2"/></svg>Your ledger stays on your device</span></div><div class="footer-col"><b>Explore</b><a href="#how">How it works</a><a href="#activity">Activity</a><a href="#insights">Insights</a></div><div class="footer-col"><b>Your data</b><a href="#privacy">Privacy</a><a href="#security">Security</a><a href="#questions">Questions</a></div><div class="footer-download"><span>Android 10+</span><a href="app/build/outputs/apk/debug/app-debug.apk" download>Download the app <span aria-hidden="true">↗</span></a><small>v1.0.0 · Debug build · ~80 MB</small></div></div><div class="wrap footer-bottom" data-reveal><span>© 2026 Spendly</span><span>Made for your phone. Kept on your phone.</span></div></footer>
+  <script type="module" src="assets/system.js"></script>
+  <script type="module" src="assets/layout/layout.js"></script>
+  <script type="module" src="assets/motion/motion.js"></script>
+  <script src="site.js" defer></script>
+</body>
+</html>
