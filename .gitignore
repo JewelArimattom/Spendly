@@ -11,3 +11,13 @@ local.properties
 app/build/
 build/
 *.hprof
+
+# Local AI/design tooling
+.agent/
+.agents/
+.claude/
+.codex/
+.devin/
+.gemini/
+.impeccable/
+.taste-skill/
