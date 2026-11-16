@@ -165,6 +165,13 @@ $env:ANDROID_HOME = "C:\Users\<user>\AppData\Local\Android\Sdk"
 The compiled APK will be located at:
 `app/build/outputs/apk/debug/app-debug.apk`
 
+### Website deployment
+
+The Spendly website is deployed by [`.github/workflows/deploy-site.yml`](.github/workflows/deploy-site.yml).
+The debug APK is published from `downloads/spendly-debug.apk`, which is the path
+used by every Download Spendly button. Set the repository's Pages source to
+**GitHub Actions** under **Settings → Pages** before the first deployment.
+
 ---
 
 ## ✅ Acceptance Criteria Verification
