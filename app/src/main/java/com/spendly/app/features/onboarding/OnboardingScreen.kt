@@ -320,7 +320,7 @@ private fun NotificationAccessStep(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "We use Android Notification Access to parse payment confirmations from UPI and banking applications locally on your phone.\n\nNotifications are analyzed entirely offline and are never uploaded.",
+            text = "Allow Notification Access to detect payment confirmations from Google Pay and banking SMS notifications as they arrive. Spendly only reads new notifications; it does not scan your existing SMS inbox. Processing stays on your phone.",
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,

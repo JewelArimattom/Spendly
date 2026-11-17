@@ -100,7 +100,12 @@ class UpiAppSessionMonitor @Inject constructor(
 
             // If ended recently within 45 seconds, merge into existing session
             val endedAt = latest.endedAt
-            if (endedAt != null && (timestamp - endedAt) <= SHORT_SWITCH_MERGE_THRESHOLD_MILLIS) {
+            // UsageEvents queries replay their entire lookback window. Ignore old start events
+            // so a later scan cannot reopen an already completed session.
+            if (endedAt != null && timestamp <= endedAt) {
+                return@withContext latest
+            }
+            if (endedAt != null && (timestamp - endedAt) in 0..SHORT_SWITCH_MERGE_THRESHOLD_MILLIS) {
                 Log.d(TAG, "Merging app switch within ${timestamp - endedAt}ms for $packageName")
                 val merged = latest.copy(
                     endedAt = null,
@@ -137,6 +142,8 @@ class UpiAppSessionMonitor @Inject constructor(
     ): UpiSessionEntity? = withContext(Dispatchers.IO) {
         val active = upiSessionDao.getActiveSession(packageName)
         if (active != null) {
+            // Ignore pause/stop events from an earlier UsageEvents replay.
+            if (timestamp < active.startedAt) return@withContext null
             val ended = active.copy(
                 endedAt = timestamp,
                 sessionStatus = "ENDED"
@@ -180,8 +187,11 @@ class UpiAppSessionMonitor @Inject constructor(
 
             when (event.eventType) {
                 UsageEvents.Event.ACTIVITY_RESUMED -> {
+                    val latestBeforeEvent = upiSessionDao.getLatestSessionForPackage(pkg)
                     val session = onAppForeground(pkg, event.timeStamp)
-                    reconciledSessions.add(session)
+                    if (latestBeforeEvent?.endedAt == null || event.timeStamp > latestBeforeEvent.endedAt) {
+                        reconciledSessions.add(session)
+                    }
                 }
                 UsageEvents.Event.ACTIVITY_PAUSED,
                 UsageEvents.Event.ACTIVITY_STOPPED -> {

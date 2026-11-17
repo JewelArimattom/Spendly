@@ -18,6 +18,17 @@ class NotificationTransactionParser @Inject constructor() {
     companion object {
         private const val TAG = "NotificationTxParser"
 
+        val SMS_NOTIFICATION_PACKAGES = setOf(
+            "com.google.android.apps.messaging",
+            "com.android.mms",
+            "com.samsung.android.messaging"
+        )
+
+        private val GENERIC_TRANSACTION_VERB = Regex(
+            """\b(?:debited|credited|paid|sent|received|spent|transferred|purchase of|refund|refunded)\b""",
+            RegexOption.IGNORE_CASE
+        )
+
         val ALL_MONITORED_PACKAGES = setOf(
             // UPI Apps
             "com.google.android.apps.nbu.paisa.user",
@@ -78,6 +89,11 @@ class NotificationTransactionParser @Inject constructor() {
         text: String?,
         postTime: Long = System.currentTimeMillis()
     ): TransactionCandidate? {
+        val isKnownPaymentSource = packageName in ALL_MONITORED_PACKAGES ||
+            packageName in SMS_NOTIFICATION_PACKAGES ||
+            BankNotificationParser.canHandle(packageName, title, text)
+        if (!isKnownPaymentSource) return null
+
         // Step 1: Filter non-financial notifications (OTP, promo, security, rating, pure balance inquiry)
         if (NotificationFilter.isNonFinancial(title, text)) {
             Log.d(TAG, "Filtered non-financial notification from $packageName")
@@ -106,6 +122,7 @@ class NotificationTransactionParser @Inject constructor() {
         postTime: Long
     ): TransactionCandidate? {
         val combined = "${title.orEmpty()} ${text.orEmpty()}".trim()
+        if (!GENERIC_TRANSACTION_VERB.containsMatchIn(combined)) return null
         val amountMinorUnits = AmountParser.extractAmountMinorUnits(combined) ?: return null
 
         val isFailed = listOf("failed", "declined", "unsuccessful").any { combined.contains(it, ignoreCase = true) }
